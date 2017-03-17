@@ -29,7 +29,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0qui0ev" name="yes" sourceRef="ExclusiveGateway_09xvwlw" targetRef="Task_02n602a">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Task_02n602a" name="Invite for Interview" camunda:candidateGroups="HCU">
+    <bpmn:userTask id="Task_02n602a" name="Invite for Interview" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0qui0ev</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17uzw9e</bpmn:outgoing>
     </bpmn:userTask>
@@ -67,12 +67,12 @@
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1822kvm" sourceRef="IntermediateThrowEvent_0d2oanb" targetRef="Task_02tw3pi" />
-    <bpmn:userTask id="Task_02tw3pi" name="Interview" camunda:candidateGroups="InterviewTeam">
+    <bpmn:userTask id="Task_02tw3pi" name="Interview" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1822kvm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1a7o44k</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="SequenceFlow_1a7o44k" sourceRef="Task_02tw3pi" targetRef="Task_1aqz4p3" />
-    <bpmn:userTask id="Task_1aqz4p3" name="Decide for acceptance" camunda:candidateGroups="InterviewTeam">
+    <bpmn:userTask id="Task_1aqz4p3" name="Decide for acceptance" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1a7o44k</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0p8i8ah</bpmn:outgoing>
     </bpmn:userTask>
@@ -85,7 +85,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0e4w381" name="no" sourceRef="ExclusiveGateway_1u2ai8x" targetRef="Task_01ohda1">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Task_01ohda1" name="Send rejection letter" camunda:candidateGroups="HR">
+    <bpmn:userTask id="Task_01ohda1" name="Send rejection letter" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0e4w381</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1vcnhm0</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1viw41c</bpmn:outgoing>
@@ -98,7 +98,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1nqystj" name="yes" sourceRef="ExclusiveGateway_1u2ai8x" targetRef="Task_1f0zkjt">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Task_1f0zkjt" name="Send job contract" camunda:candidateGroups="HR">
+    <bpmn:userTask id="Task_1f0zkjt" name="Send job contract" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1nqystj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0km4zu7</bpmn:outgoing>
     </bpmn:userTask>
@@ -107,7 +107,7 @@
       <bpmn:incoming>SequenceFlow_0km4zu7</bpmn:incoming>
       <bpmn:messageEventDefinition />
     </bpmn:endEvent>
-    <bpmn:userTask id="Task_0xffwqi" name="First check is candiate eligible" camunda:formKey="embedded:app:forms/FirstCheck.html" camunda:candidateGroups="HR">
+    <bpmn:userTask id="Task_0xffwqi" name="First check is candiate eligible" camunda:formKey="embedded:app:forms/FirstCheck.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0s4e869</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0cqn83m</bpmn:outgoing>
     </bpmn:userTask>
