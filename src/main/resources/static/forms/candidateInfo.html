@@ -1,4 +1,4 @@
-<form name="From_FirstCheck">
+<form name="From_CandidateInfo">
     <script cam-script type="text/form-script">
         camForm.on('form-loaded', function() {
             camForm.variableManager.fetchVariable('candidateJob');
@@ -46,11 +46,5 @@
         <label for="candidateAdditionalInfo">Additional Information</label>
         <textarea class="form-control" cam-variable-type="String"
                   cam-variable-name="candidateAdditionalInfo" name="candidateAdditionalInfo" readonly="true"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="candidate_accepted">Is candidate eligible?</label>
-        <br>
-        <input type="checkbox" cam-variable-name="candidate_accepted" cam-variable-type="Boolean" checked="true"
-               name="candidate_accepted"/>
     </div>
 </form>

@@ -140,7 +140,7 @@
       <bpmn:outgoing>SequenceFlow_0g822r9</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_052t44w</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Task_01ohda1" name="Send rejection letter" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_01ohda1" name="Send rejection letter" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1vcnhm0</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_12dsqrb</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1b0wcfy</bpmn:incoming>
@@ -159,7 +159,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0e4lrqp" name="no" sourceRef="ExclusiveGateway_1uni713" targetRef="Task_01ohda1">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Task_1f0zkjt" name="Send job contract" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1f0zkjt" name="Send job contract" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0g822r9</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0j1zfo0</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0i9ic25</bpmn:outgoing>
@@ -195,7 +195,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1u5nzvs" sourceRef="IntermediateThrowEvent_1mwcwky" targetRef="Task_0mqhg99" />
     <bpmn:sequenceFlow id="SequenceFlow_12lkylt" sourceRef="Task_0mqhg99" targetRef="EndEvent_0medrqr" />
     <bpmn:sequenceFlow id="SequenceFlow_0cd493w" sourceRef="Task_1ggk3cz" targetRef="IntermediateThrowEvent_1mwcwky" />
-    <bpmn:userTask id="Task_1tfmnff" name="Send candidate assesment" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1tfmnff" name="Send candidate assesment" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0qui0ev</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1d1l9ea</bpmn:outgoing>
     </bpmn:userTask>
@@ -203,44 +203,44 @@
       <bpmn:incoming>SequenceFlow_0fzhgef</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_11e4v7f</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0x0tkub" name="Invite for telephone interview" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_0x0tkub" name="Invite for telephone interview" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1oggf1h</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1r7dqce</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1rm10ry" name="Telephone inerview" camunda:candidateGroups="manager">
+    <bpmn:userTask id="Task_1rm10ry" name="Telephone inerview" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="manager">
       <bpmn:incoming>SequenceFlow_0b9vyi3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18slvhe</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_010k5us" name="Invite for second interview" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_010k5us" name="Invite for second interview" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1u62b84</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_077flx4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1fjsy9i" name="Interview" camunda:candidateGroups="interviewTeam">
+    <bpmn:userTask id="Task_1fjsy9i" name="Interview" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="interviewTeam">
       <bpmn:incoming>SequenceFlow_0mqpwt9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ne2yg4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1ureo8o" name="Decide to send job contract" camunda:candidateGroups="interviewTeam">
+    <bpmn:userTask id="Task_1ureo8o" name="Decide to send job contract" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="interviewTeam">
       <bpmn:incoming>SequenceFlow_0ne2yg4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1xtrd6k</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0zz2gnx" name="Negioate contract" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_0zz2gnx" name="Negioate contract" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0s7bxuq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0t3wg3h</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1ggk3cz" name="Prepare onboarding process" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1ggk3cz" name="Prepare onboarding process" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1gyr6l0</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0cd493w</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0mqhg99" name="Start onboarding process" camunda:candidateGroups="manager">
+    <bpmn:userTask id="Task_0mqhg99" name="Start onboarding process" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="manager">
       <bpmn:incoming>SequenceFlow_1u5nzvs</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_12lkylt</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="SequenceFlow_0pepbku" sourceRef="Task_1ju04yp" targetRef="Task_1302ax7" />
-    <bpmn:userTask id="Task_1ju04yp" name="Receive Assessment" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1ju04yp" name="Receive Assessment" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_1d1l9ea</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0pepbku</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1302ax7" name="Evaluate assessment" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1302ax7" name="Evaluate assessment" camunda:formKey="embedded:app:forms/candidateInfo.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0pepbku</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17b1byc</bpmn:outgoing>
     </bpmn:userTask>
