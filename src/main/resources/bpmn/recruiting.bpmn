@@ -43,10 +43,10 @@
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="SequenceFlow_0qui0ev" name="yes" sourceRef="ExclusiveGateway_09xvwlw" targetRef="Task_1tfmnff">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1vcnhm0" name="no" sourceRef="ExclusiveGateway_09xvwlw" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0cqn83m" sourceRef="Task_0xffwqi" targetRef="ExclusiveGateway_09xvwlw" />
     <bpmn:sequenceFlow id="SequenceFlow_0s4e869" sourceRef="Task_1hqqyfw" targetRef="Task_0xffwqi" />
@@ -55,12 +55,9 @@
       <bpmn:incoming>SequenceFlow_0hgjlz8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0s4e869</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:startEvent id="StartEvent_0noiwrk" name="Application arrived">
+    <bpmn:startEvent id="StartEvent_0noiwrk" name="Application arrived" camunda:formKey="embedded:app:forms/application.html">
       <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="recruiting_name" label="Name" type="string" />
-          <camunda:formField id="recruiting_mail" label="Mail" type="string" />
-        </camunda:formData>
+        <camunda:formData />
       </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_0hgjlz8</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_16iu0we" />
@@ -69,38 +66,38 @@
     <bpmn:sequenceFlow id="SequenceFlow_1d1l9ea" sourceRef="Task_1tfmnff" targetRef="Task_1ju04yp" />
     <bpmn:sequenceFlow id="SequenceFlow_17b1byc" sourceRef="Task_1302ax7" targetRef="ExclusiveGateway_0j8370u" />
     <bpmn:sequenceFlow id="SequenceFlow_12dsqrb" name="no" sourceRef="ExclusiveGateway_0j8370u" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0fzhgef" name="yes" sourceRef="ExclusiveGateway_0j8370u" targetRef="Task_15dqr7h">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_11e4v7f" sourceRef="Task_15dqr7h" targetRef="ExclusiveGateway_1y53t7z" />
     <bpmn:sequenceFlow id="SequenceFlow_1b0wcfy" name="no" sourceRef="ExclusiveGateway_1y53t7z" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1oggf1h" name="yes" sourceRef="ExclusiveGateway_1y53t7z" targetRef="Task_0x0tkub">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1r7dqce" sourceRef="Task_0x0tkub" targetRef="IntermediateThrowEvent_1kjhfap" />
     <bpmn:sequenceFlow id="SequenceFlow_0b9vyi3" sourceRef="IntermediateThrowEvent_1kjhfap" targetRef="Task_1rm10ry" />
     <bpmn:sequenceFlow id="SequenceFlow_18slvhe" sourceRef="Task_1rm10ry" targetRef="ExclusiveGateway_1w55ywo" />
     <bpmn:sequenceFlow id="SequenceFlow_0946ab6" name="no" sourceRef="ExclusiveGateway_1w55ywo" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1u62b84" sourceRef="ExclusiveGateway_1w55ywo" targetRef="Task_010k5us">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_077flx4" sourceRef="Task_010k5us" targetRef="IntermediateThrowEvent_0yk39t1" />
     <bpmn:sequenceFlow id="SequenceFlow_0mqpwt9" sourceRef="IntermediateThrowEvent_0yk39t1" targetRef="Task_1fjsy9i" />
     <bpmn:sequenceFlow id="SequenceFlow_0g822r9" name="yes" sourceRef="ExclusiveGateway_1x1livm" targetRef="Task_1f0zkjt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_052t44w" name="no" sourceRef="ExclusiveGateway_1x1livm" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0ne2yg4" sourceRef="Task_1fjsy9i" targetRef="Task_1ureo8o" />
     <bpmn:sequenceFlow id="SequenceFlow_1xtrd6k" sourceRef="Task_1ureo8o" targetRef="ExclusiveGateway_1x1livm" />
-    <bpmn:userTask id="Task_0xffwqi" name="First check is candiate eligible" camunda:formKey="embedded:app:forms/FirstCheck.html" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_0xffwqi" name="First check is candidate eligible" camunda:formKey="embedded:app:forms/firstCheck.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0s4e869</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0cqn83m</bpmn:outgoing>
     </bpmn:userTask>
@@ -157,10 +154,10 @@
       <bpmn:messageEventDefinition />
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1gyr6l0" name="yes" sourceRef="ExclusiveGateway_10133u9" targetRef="Task_1ggk3cz">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0e4lrqp" name="no" sourceRef="ExclusiveGateway_1uni713" targetRef="Task_01ohda1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:userTask id="Task_1f0zkjt" name="Send job contract" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0g822r9</bpmn:incoming>
@@ -174,11 +171,11 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0i9ic25" sourceRef="Task_1f0zkjt" targetRef="ExclusiveGateway_10133u9" />
     <bpmn:sequenceFlow id="SequenceFlow_0s7bxuq" name="no" sourceRef="ExclusiveGateway_10133u9" targetRef="Task_0zz2gnx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0t3wg3h" sourceRef="Task_0zz2gnx" targetRef="ExclusiveGateway_1uni713" />
     <bpmn:sequenceFlow id="SequenceFlow_0j1zfo0" name="yes" sourceRef="ExclusiveGateway_1uni713" targetRef="Task_1f0zkjt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recruting_first_check==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidate_accepted==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_1uni713" name="Aggrement">
       <bpmn:incoming>SequenceFlow_0t3wg3h</bpmn:incoming>
@@ -198,7 +195,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1u5nzvs" sourceRef="IntermediateThrowEvent_1mwcwky" targetRef="Task_0mqhg99" />
     <bpmn:sequenceFlow id="SequenceFlow_12lkylt" sourceRef="Task_0mqhg99" targetRef="EndEvent_0medrqr" />
     <bpmn:sequenceFlow id="SequenceFlow_0cd493w" sourceRef="Task_1ggk3cz" targetRef="IntermediateThrowEvent_1mwcwky" />
-    <bpmn:userTask id="Task_1tfmnff" name="Send candiate assesment" camunda:candidateGroups="hr">
+    <bpmn:userTask id="Task_1tfmnff" name="Send candidate assesment" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0qui0ev</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1d1l9ea</bpmn:outgoing>
     </bpmn:userTask>
