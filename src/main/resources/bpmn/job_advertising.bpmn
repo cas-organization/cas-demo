@@ -3,14 +3,14 @@
   <bpmn:collaboration id="Collaboration_04mxxar">
     <bpmn:participant id="Participant_1pfds5b" name="Job Advertising for postgraduate" processRef="JobAdvertising" />
   </bpmn:collaboration>
-  <bpmn:process id="JobAdvertising" isExecutable="false">
+  <bpmn:process id="JobAdvertising" isExecutable="true">
     <bpmn:laneSet>
       <bpmn:lane id="Lane_1getvjd" name="HR">
         <bpmn:flowNodeRef>EndEvent_0t5gxbh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0gqphbp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0vxvpfe</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0hjelvc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_1eln7fy</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0gqphbp</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1x05u06" name="Line Manager">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -37,8 +37,12 @@
       <bpmn:outgoing>SequenceFlow_0uqobop</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0jo0133" sourceRef="Task_067w9gd" targetRef="ExclusiveGateway_0cpk6e1" />
-    <bpmn:sequenceFlow id="SequenceFlow_03bpjku" name="No" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_0hjelvc" />
-    <bpmn:sequenceFlow id="SequenceFlow_0uqobop" name="Yes" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_1eln7fy" />
+    <bpmn:sequenceFlow id="SequenceFlow_03bpjku" name="No" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_0hjelvc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_0uqobop" name="Yes" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_1eln7fy">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0i49iq4" sourceRef="Task_0hjelvc" targetRef="Task_1eln7fy" />
     <bpmn:endEvent id="EndEvent_0t5gxbh" name="job offer posted">
       <bpmn:incoming>SequenceFlow_18k3rxf</bpmn:incoming>
@@ -65,10 +69,6 @@
       <bpmn:incoming>SequenceFlow_0ecwuf3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_08po4rm</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_0gqphbp" name="Add the description of the graduate intake program">
-      <bpmn:incoming>SequenceFlow_08po4rm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0tl2ofp</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:userTask id="Task_0vxvpfe" name="decide the final profil">
       <bpmn:extensionElements>
         <camunda:formData>
@@ -91,6 +91,10 @@
       <bpmn:incoming>SequenceFlow_0uqobop</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0i49iq4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18k3rxf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0gqphbp" name="Add the description of the graduate intake program">
+      <bpmn:incoming>SequenceFlow_08po4rm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0tl2ofp</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -189,14 +193,14 @@
         <di:waypoint xsi:type="dc:Point" x="685" y="234" />
         <di:waypoint xsi:type="dc:Point" x="714" y="234" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="700" y="286" width="0" height="12" />
+          <dc:Bounds x="655" y="286" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0tl2ofp_di" bpmnElement="SequenceFlow_0tl2ofp">
         <di:waypoint xsi:type="dc:Point" x="814" y="234" />
         <di:waypoint xsi:type="dc:Point" x="836" y="234" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="825" y="213" width="0" height="12" />
+          <dc:Bounds x="780" y="213" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0vxz11v_di" bpmnElement="Task_0xblyvx">
@@ -204,9 +208,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_0zs6227_di" bpmnElement="Task_11o22g9">
         <dc:Bounds x="558" y="310" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_00hxrmk_di" bpmnElement="Task_0gqphbp">
-        <dc:Bounds x="714" y="194" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_04gs6ak_di" bpmnElement="Task_0vxvpfe">
         <dc:Bounds x="836" y="194" width="100" height="80" />
@@ -219,6 +220,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_0ezimcn_di" bpmnElement="Task_1eln7fy">
         <dc:Bounds x="1234" y="179" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1x6mtn7_di" bpmnElement="Task_0gqphbp">
+        <dc:Bounds x="714" y="194" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
