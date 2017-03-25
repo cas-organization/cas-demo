@@ -52,14 +52,20 @@ public class CamundaInitialDataGenerator {
 
         createUser("hr1");
         createUser("hr2");
+        createUser("manager1");
+        createUser("interviewer1");
 
         createGroup("hr");
+        createGroup("manager");
         createGroup("interviewTeam");
 
         identityService().createMembership("hr1", "hr");
         identityService().createMembership("hr2", "hr");
+        identityService().createMembership("manager1", "manager");
+        identityService().createMembership("interviewer1", "interviewTeam");
 
         authorizeGroup("hr");
+        authorizeGroup("manager");
         authorizeGroup("interviewTeam");
 
         createDefaultFilters();
