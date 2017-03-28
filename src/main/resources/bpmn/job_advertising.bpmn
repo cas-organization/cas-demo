@@ -22,11 +22,9 @@
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="SequenceFlow_1gebxat" sourceRef="StartEvent_1" targetRef="Task_0xblyvx" />
     <bpmn:sequenceFlow id="SequenceFlow_0ecwuf3" sourceRef="Task_0xblyvx" targetRef="Task_11o22g9" />
-    <bpmn:startEvent id="StartEvent_1" name="New application needed" camunda:formKey="FirstInput_form">
+    <bpmn:startEvent id="StartEvent_1" name="New application needed">
       <bpmn:extensionElements>
-        <camunda:formData businessKey="FormField_2bc827k">
-          <camunda:formField id="FormField_JobLabel" label="Job label" type="string" />
-        </camunda:formData>
+        <camunda:formData businessKey="FormField_2bc827k" />
       </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_1gebxat</bpmn:outgoing>
     </bpmn:startEvent>
@@ -38,10 +36,10 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0jo0133" sourceRef="Task_067w9gd" targetRef="ExclusiveGateway_0cpk6e1" />
     <bpmn:sequenceFlow id="SequenceFlow_03bpjku" name="No" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_0hjelvc">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${profil_valide==false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0uqobop" name="Yes" sourceRef="ExclusiveGateway_0cpk6e1" targetRef="Task_1eln7fy">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${profil_valide==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0i49iq4" sourceRef="Task_0hjelvc" targetRef="Task_1eln7fy" />
     <bpmn:endEvent id="EndEvent_0t5gxbh" name="job offer posted">
@@ -50,49 +48,44 @@
     <bpmn:sequenceFlow id="SequenceFlow_18k3rxf" sourceRef="Task_1eln7fy" targetRef="EndEvent_0t5gxbh" />
     <bpmn:sequenceFlow id="SequenceFlow_08po4rm" sourceRef="Task_11o22g9" targetRef="Task_0gqphbp" />
     <bpmn:sequenceFlow id="SequenceFlow_0tl2ofp" sourceRef="Task_0gqphbp" targetRef="Task_0vxvpfe" />
-    <bpmn:userTask id="Task_0xblyvx" name="Identify the skills gap">
+    <bpmn:userTask id="Task_0xblyvx" name="Identify the skills gap" camunda:formKey="embedded:app:forms/skillGapIdentification.html" camunda:candidateGroups="manager">
       <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="FormField_TasksToDo" label="Skills required" type="enum" />
-          <camunda:formField id="FormField_Description" label="Short description" type="string" />
-        </camunda:formData>
+        <camunda:formData />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1gebxat</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ecwuf3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_11o22g9" name="Define the business profil" camunda:formKey="DefineProfile">
+    <bpmn:userTask id="Task_11o22g9" name="Define the business profil" camunda:formKey="embedded:app:forms/defineBusinessProfil.html" camunda:candidateGroups="manager">
       <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="FormField_descProfil" label="Profil definition" type="string" />
-        </camunda:formData>
+        <camunda:formData />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0ecwuf3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_08po4rm</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0vxvpfe" name="decide the final profil">
+    <bpmn:userTask id="Task_0vxvpfe" name="decide the final profil" camunda:formKey="embedded:app:forms/finalProfil.html" camunda:candidateGroups="hr">
       <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="FormField_DefineProfil" type="string" />
-          <camunda:formField id="FormField_3veq22c" type="string" />
-        </camunda:formData>
+        <camunda:formData />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0tl2ofp</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0l3n5wq</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_067w9gd" name="Validate the profil">
+    <bpmn:userTask id="Task_067w9gd" name="Validate the profil" camunda:formKey="embedded:app:forms/validateFinalProfil.html" camunda:candidateGroups="manager">
       <bpmn:incoming>SequenceFlow_0l3n5wq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0jo0133</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0hjelvc" name="Final update of the profil">
+    <bpmn:userTask id="Task_0hjelvc" name="Final update of the profil" camunda:formKey="embedded:app:forms/finalUpdate.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_03bpjku</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0i49iq4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1eln7fy" name="Posting the profil online">
+    <bpmn:userTask id="Task_1eln7fy" name="Posting the profil online" camunda:formKey="embedded:app:forms/postingOnline.html" camunda:candidateGroups="hr">
       <bpmn:incoming>SequenceFlow_0uqobop</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0i49iq4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18k3rxf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0gqphbp" name="Add the description of the graduate intake program">
+    <bpmn:userTask id="Task_0gqphbp" name="Add the description of the graduate intake program" camunda:formKey="embedded:app:forms/addStudentIntakeProg.html" camunda:candidateGroups="hr">
+      <bpmn:extensionElements>
+        <camunda:formData />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_08po4rm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0tl2ofp</bpmn:outgoing>
     </bpmn:userTask>
