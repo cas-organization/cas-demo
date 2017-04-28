@@ -1,5 +1,7 @@
 package ch.fhnw.recruiting.rezscore;
 
+import ch.fhnw.recruiting.util.RestClientFactory;
+
 public class RezScoreAdapter {
 
     private final RezScoreApiClient rezScoreApiClient;

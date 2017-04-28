@@ -1,5 +1,6 @@
 package ch.fhnw.recruiting;
 
+import ch.fhnw.recruiting.mail.MailAdapter;
 import ch.fhnw.recruiting.rezscore.RezScoreAdapter;
 import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,11 @@ public class RecruitingApplication {
     @Bean
     public RezScoreAdapter rezScoreAdapter(@Value("${endpoint.rezscore}") String url) {
         return new RezScoreAdapter(url);
+    }
+
+    @Bean
+    public MailAdapter mailAdapter(@Value("${endpoint.mail}") String url) {
+        return new MailAdapter(url);
     }
 
 }

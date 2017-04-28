@@ -1,4 +1,4 @@
-package ch.fhnw.recruiting.rezscore;
+package ch.fhnw.recruiting.util;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -7,6 +7,7 @@ import feign.Logger;
 import feign.codec.StringDecoder;
 import feign.form.FormEncoder;
 import feign.hystrix.HystrixFeign;
+import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
 
 public class RestClientFactory {
@@ -15,7 +16,7 @@ public class RestClientFactory {
         System.setProperty("hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds", "20000");
     }
 
-    static <T> T createClient(String url, Class<T> clazz) {
+    public static <T> T createClient(String url, Class<T> clazz) {
         return createDeafultClient().target(clazz, url);
     }
 
@@ -29,7 +30,7 @@ public class RestClientFactory {
                 .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 
         return HystrixFeign.builder()
-                .encoder(new FormEncoder())
+                .encoder(new FormEncoder(new JacksonEncoder(mapper)))
                 .decoder(new StringDecoder())
                 .logger(new Slf4jLogger(RestClientFactory.class))
                 .logLevel(Logger.Level.HEADERS);

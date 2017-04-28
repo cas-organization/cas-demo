@@ -12,13 +12,13 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 @Component
-public class CvAnalyzeDelegate implements JavaDelegate {
+public class CvAnalyze implements JavaDelegate {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CvAnalyzeDelegate.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CvAnalyze.class);
 
     private final RezScoreAdapter rezScoreAdapter;
 
-    public CvAnalyzeDelegate(RezScoreAdapter rezScoreAdapter) {
+    public CvAnalyze(RezScoreAdapter rezScoreAdapter) {
         this.rezScoreAdapter = rezScoreAdapter;
     }
 
