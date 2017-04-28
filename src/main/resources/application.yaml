@@ -4,3 +4,9 @@ camunda.bpm:
   admin-user:
     id: admin
     password: admin
+
+endpoint:
+  rezscore: https://rezscore.com/a/112084
+
+logging.level:
+  ch.fhnw: DEBUG

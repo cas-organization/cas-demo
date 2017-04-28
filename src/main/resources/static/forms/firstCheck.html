@@ -4,11 +4,19 @@
             camForm.variableManager.fetchVariable('candidateJob');
             camForm.variableManager.fetchVariable('candidateMail');
             camForm.variableManager.fetchVariable('candidateMobile');
+            camForm.variableManager.fetchVariable('rezScoreGrade');
+            camForm.variableManager.fetchVariable('rezScoreImpactScore');
+            camForm.variableManager.fetchVariable('rezScoreFirstIndustry');
+            camForm.variableManager.fetchVariable('rezScoreSecondIndustry');
         });
         camForm.on('variables-restored', function() {
             $scope.candidateJob = camForm.variableManager.variableValue('candidateJob');
             $scope.candidateMail = camForm.variableManager.variableValue('candidateMail');
             $scope.candidateMobile = camForm.variableManager.variableValue('candidateMobile');
+            $scope.rezScoreGrade = camForm.variableManager.variableValue('rezScoreGrade');
+            $scope.rezScoreImpactScore = camForm.variableManager.variableValue('rezScoreImpactScore');
+            $scope.rezScoreFirstIndustry = camForm.variableManager.variableValue('rezScoreFirstIndustry');
+            $scope.rezScoreSecondIndustry = camForm.variableManager.variableValue('rezScoreSecondIndustry');
         });
     </script>
 
@@ -36,6 +44,13 @@
     <div class="form-group">
         <label for=candidateCv">CV:</label>
         <a cam-file-download="candidateCv"></a>
+    </div>
+    <div class="form-group">
+        <label>CV Infos provided by RezScore</label><br>
+        <label>Grade: {{rezScoreGrade}}</label><br>
+        <label>Impact Score: {{rezScoreImpactScore}}</label><br>
+        <label>First Industry: {{rezScoreFirstIndustry}}</label><br>
+        <label>Second Industry: {{rezScoreSecondIndustry}}</label><br>
     </div>
     <div class="form-group">
         <label for="candidateMotivation">Motivation</label>

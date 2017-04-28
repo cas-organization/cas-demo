@@ -1,20 +1,24 @@
 package ch.fhnw.recruiting;
 
+import ch.fhnw.recruiting.rezscore.RezScoreAdapter;
 import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
 @EnableProcessApplication
 public class RecruitingApplication {
 
-    private static final Logger logger = LoggerFactory.getLogger(RecruitingApplication.class);
-
     public static void main(String[] args) {
         SpringApplication.run(RecruitingApplication.class, args);
+    }
+
+    @Bean
+    public RezScoreAdapter rezScoreAdapter(@Value("${endpoint.rezscore}") String url) {
+        return new RezScoreAdapter(url);
     }
 
 }

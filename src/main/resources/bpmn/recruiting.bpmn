@@ -52,7 +52,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0cqn83m" sourceRef="Task_0xffwqi" targetRef="ExclusiveGateway_09xvwlw" />
     <bpmn:sequenceFlow id="SequenceFlow_0s4e869" sourceRef="Task_1hqqyfw" targetRef="Task_0xffwqi" />
     <bpmn:sequenceFlow id="SequenceFlow_0hgjlz8" sourceRef="StartEvent_0noiwrk" targetRef="Task_1hqqyfw" />
-    <bpmn:serviceTask id="Task_1hqqyfw" name="Initialise recruitment process" camunda:delegateExpression="${sayHelloDelegate}">
+    <bpmn:serviceTask id="Task_1hqqyfw" name="Analyze CV" camunda:delegateExpression="${cvAnalyzeDelegate}" camunda:async="true">
       <bpmn:incoming>SequenceFlow_0hgjlz8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0s4e869</bpmn:outgoing>
     </bpmn:serviceTask>
