@@ -42,8 +42,8 @@ public class CvAnalyzeDelegate implements JavaDelegate {
             RezScore score = rezScoreAdapter.getScore(read(cv));
             LOGGER.info("Got answer from RezScore {}", score);
             return score;
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            LOGGER.error("Error getting score from RezScore.", ex);
         }
         return null;
     }
