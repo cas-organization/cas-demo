@@ -3,12 +3,12 @@ package ch.fhnw.recruiting.mail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import static java.util.stream.Collectors.joining;
 
 class TextFileReader {
 
@@ -16,16 +16,11 @@ class TextFileReader {
 
     String readTextFile(String path) {
         try {
-            URL resource = getClass().getClassLoader().getResource(path);
-            if (resource == null) {
-                LOGGER.warn("No file found with path={}", path);
-                return "";
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+            try (BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream))) {
+                return buffer.lines().collect(joining("\n"));
             }
-
-            Path filePath = Paths.get(resource.toURI());
-            byte[] bytes = Files.readAllBytes(filePath);
-            return new String(bytes);
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             LOGGER.warn("Error reading file with path={}", path, e);
             return "";
         }
