@@ -17,7 +17,7 @@ public class MailService {
         String candidateMail = (String) execution.getVariable("candidateMail");
         String lastName = (String) execution.getVariable("candidateLastName");
         String firstName = (String) execution.getVariable("candidateFirstName");
-        String body = TextFileReader.readTextFile(template);
+        String body = new TextFileReader().readTextFile(template);
 
         String content = String.format("Dear %s %s<br><br>%s", lastName, firstName, body);
         Mail mail = new Mail(candidateMail, subject, content);

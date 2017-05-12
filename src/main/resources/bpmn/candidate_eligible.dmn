@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_1leiczn" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="CandidateEligible">
+    <decisionTable id="decisionTable" hitPolicy="FIRST">
+      <input id="grade" label="Grade">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>grade</text>
+        </inputExpression>
+      </input>
+      <output id="accepted" label="Candidate Accepted" name="" typeRef="boolean" />
+      <rule id="row-619254703-1">
+        <inputEntry id="UnaryTests_0wpwjr4">        <text><![CDATA["A"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0tyq3dr">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-619254703-2">
+        <inputEntry id="UnaryTests_0dgptgx">        <text><![CDATA["B"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1ud335v">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-619254703-3">
+        <inputEntry id="UnaryTests_1b8vgsr">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1pz2alx">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
