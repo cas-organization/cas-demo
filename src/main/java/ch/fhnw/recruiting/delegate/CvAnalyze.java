@@ -1,5 +1,6 @@
 package ch.fhnw.recruiting.delegate;
 
+import ch.fhnw.recruiting.mail.MailService;
 import ch.fhnw.recruiting.rezscore.RezScore;
 import ch.fhnw.recruiting.rezscore.RezScoreAdapter;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
@@ -17,13 +18,18 @@ public class CvAnalyze implements JavaDelegate {
     private static final Logger LOGGER = LoggerFactory.getLogger(CvAnalyze.class);
 
     private final RezScoreAdapter rezScoreAdapter;
+    private final MailService mailService;
 
-    public CvAnalyze(RezScoreAdapter rezScoreAdapter) {
+    public CvAnalyze(RezScoreAdapter rezScoreAdapter, MailService mailService) {
         this.rezScoreAdapter = rezScoreAdapter;
+        this.mailService = mailService;
     }
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
+        LOGGER.info("Send submit mail to candidate {}", execution);
+        mailService.sendMail(execution, "Thanks for your application", "templates/submit-mail.txt");
+
         LOGGER.info("Start upload cv {}", execution);
 
         RezScore score = getRezScore(execution);
