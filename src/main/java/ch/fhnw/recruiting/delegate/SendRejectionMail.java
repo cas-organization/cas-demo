@@ -26,13 +26,12 @@ public class SendRejectionMail implements JavaDelegate {
         String candidateMail = (String) execution.getVariable("candidateMail");
         String lastName = (String) execution.getVariable("candidateLastName");
         String firstName = (String) execution.getVariable("candidateFirstName");
+        String body = TextFileReader.readTextFile("templates/rejection-mail.txt");
 
-        String content = String.format("Dear %s %s<br><br>%s", lastName, firstName, "We are so sorry");
+        String content = String.format("Dear %s %s<br><br>%s", lastName, firstName, body);
         Mail mail = new Mail(candidateMail, "Rejection Letter", content);
 
         mailAdapter.sendMail(mail);
     }
-
-
 
 }
