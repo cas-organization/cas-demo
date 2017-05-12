@@ -8,7 +8,7 @@
             camForm.variableManager.fetchVariable('rezScoreImpactScore');
             camForm.variableManager.fetchVariable('rezScoreFirstIndustry');
             camForm.variableManager.fetchVariable('rezScoreSecondIndustry');
-            camForm.variableManager.fetchVariable('eligibleRecommendation');
+            camForm.variableManager.fetchVariable('recommendCandidate');
         });
         camForm.on('variables-restored', function() {
             $scope.candidateJob = camForm.variableManager.variableValue('candidateJob');
@@ -18,7 +18,9 @@
             $scope.rezScoreImpactScore = camForm.variableManager.variableValue('rezScoreImpactScore');
             $scope.rezScoreFirstIndustry = camForm.variableManager.variableValue('rezScoreFirstIndustry');
             $scope.rezScoreSecondIndustry = camForm.variableManager.variableValue('rezScoreSecondIndustry');
-            $scope.eligibleRecommendation = camForm.variableManager.variableValue('eligibleRecommendation');
+            $scope.recommendCandidate = camForm.variableManager.variableValue('recommendCandidate');
+            console.log($scope.recommendCandidate);
+            console.log("hello");
         });
     </script>
 
@@ -65,12 +67,12 @@
                   cam-variable-name="candidateAdditionalInfo" name="candidateAdditionalInfo" readonly="true"></textarea>
     </div>
     <div class="form-group">
-        <label ng-if="eligibleRecommendation">System recommend to accept the candidate</label>
-        <label ng-if="!eligibleRecommendation" style="color: red">System recommend to reject the candidate!</label>
+        <label ng-if="recommendCandidate">System recommend to accept the candidate</label>
+        <label ng-if="!recommendCandidate" style="color: red">System recommend to reject the candidate!</label>
         <br>
         <label for="candidate_accepted">Is candidate eligible?</label>
         <br>
         <input type="checkbox" cam-variable-name="candidate_accepted" cam-variable-type="Boolean"
-               ng-checked="eligibleRecommendation" name="candidate_accepted"/>
+               ng-checked="recommendCandidate" name="candidate_accepted"/>
     </div>
 </form>

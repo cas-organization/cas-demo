@@ -23,7 +23,7 @@ public class RecommendEligibility implements JavaDelegate {
 
         LOGGER.info("Recommend candidate {}", eligible);
 
-        execution.setVariable("eligibleRecommendation", eligible);
+        execution.setVariable("recommendCandidate", eligible);
     }
 
 }
