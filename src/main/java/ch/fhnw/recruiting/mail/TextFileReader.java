@@ -1,4 +1,4 @@
-package ch.fhnw.recruiting.delegate;
+package ch.fhnw.recruiting.mail;
 
 import org.springframework.core.io.ClassPathResource;
 

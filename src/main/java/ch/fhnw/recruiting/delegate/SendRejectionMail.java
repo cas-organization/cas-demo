@@ -1,7 +1,6 @@
 package ch.fhnw.recruiting.delegate;
 
-import ch.fhnw.recruiting.mail.Mail;
-import ch.fhnw.recruiting.mail.MailAdapter;
+import ch.fhnw.recruiting.mail.MailService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
@@ -13,25 +12,16 @@ public class SendRejectionMail implements JavaDelegate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SendRejectionMail.class);
 
-    private final MailAdapter mailAdapter;
+    private final MailService mailService;
 
-    public SendRejectionMail(MailAdapter mailAdapter) {
-        this.mailAdapter = mailAdapter;
+    public SendRejectionMail(MailService mailService) {
+        this.mailService = mailService;
     }
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("Send rejection mail to candidate {}", execution);
-
-        String candidateMail = (String) execution.getVariable("candidateMail");
-        String lastName = (String) execution.getVariable("candidateLastName");
-        String firstName = (String) execution.getVariable("candidateFirstName");
-        String body = TextFileReader.readTextFile("templates/rejection-mail.txt");
-
-        String content = String.format("Dear %s %s<br><br>%s", lastName, firstName, body);
-        Mail mail = new Mail(candidateMail, "Rejection Letter", content);
-
-        mailAdapter.sendMail(mail);
+        mailService.sendMail(execution, "Rejection Letter", "templates/rejection-mail.txt");
     }
 
 }
