@@ -18,7 +18,10 @@ public class RecommendEligibility implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("Recommend is candidate eligible {}", execution);
 
-        boolean eligible = candidateDecider.decideEligible("A");
+        String rezScoreGrade = (String) execution.getVariable("rezScoreGrade");
+        boolean eligible = candidateDecider.decideEligible(rezScoreGrade);
+
+        LOGGER.info("Recommend candidate {}", eligible);
 
         execution.setVariable("eligibleRecommendation", eligible);
     }

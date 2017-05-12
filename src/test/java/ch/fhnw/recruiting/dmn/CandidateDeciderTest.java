@@ -12,6 +12,7 @@ public class CandidateDeciderTest {
 
         assertThat(candidateDecider.decideEligible("A"), is(true));
         assertThat(candidateDecider.decideEligible("B"), is(true));
+        assertThat(candidateDecider.decideEligible("B-"), is(true));
         assertThat(candidateDecider.decideEligible("C"), is(false));
     }
 }

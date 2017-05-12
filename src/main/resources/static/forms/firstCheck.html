@@ -65,10 +65,12 @@
                   cam-variable-name="candidateAdditionalInfo" name="candidateAdditionalInfo" readonly="true"></textarea>
     </div>
     <div class="form-group">
-        <label>System recommend to accept the candidate {{eligibleRecommendation}}</label>
+        <label ng-if="eligibleRecommendation">System recommend to accept the candidate</label>
+        <label ng-if="!eligibleRecommendation" style="color: red">System recommend to reject the candidate!</label>
+        <br>
         <label for="candidate_accepted">Is candidate eligible?</label>
         <br>
-        <input type="checkbox" cam-variable-name="candidate_accepted" cam-variable-type="Boolean" checked="true"
-               name="candidate_accepted"/>
+        <input type="checkbox" cam-variable-name="candidate_accepted" cam-variable-type="Boolean"
+               ng-checked="eligibleRecommendation" name="candidate_accepted"/>
     </div>
 </form>
