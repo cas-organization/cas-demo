@@ -22,7 +22,7 @@
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="SequenceFlow_1gebxat" sourceRef="StartEvent_1" targetRef="Task_0xblyvx" />
     <bpmn:sequenceFlow id="SequenceFlow_0ecwuf3" sourceRef="Task_0xblyvx" targetRef="Task_11o22g9" />
-    <bpmn:startEvent id="StartEvent_1" name="New application needed">
+    <bpmn:startEvent id="StartEvent_1" name="New application needed" camunda:formKey="embedded:app:forms/newJobAdvertising.html">
       <bpmn:extensionElements>
         <camunda:formData businessKey="FormField_2bc827k" />
       </bpmn:extensionElements>
