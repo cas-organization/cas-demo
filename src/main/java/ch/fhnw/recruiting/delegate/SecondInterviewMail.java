@@ -7,26 +7,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
-
 
 @Component
-public class AcknowledgementMail implements JavaDelegate {
+public class SecondInterviewMail implements JavaDelegate {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AcknowledgementMail.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SecondInterviewMail.class);
 
     private final MailService mailService;
 
-    public AcknowledgementMail(MailService mailService) {
+    public SecondInterviewMail(MailService mailService) {
         this.mailService = mailService;
     }
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        LOGGER.info("Send submit mail to candidate {}", execution);
-        mailService.sendMail(execution, "Thanks for your application", "templates/submit-mail.txt");
+        LOGGER.info("Send second interview mail to candidate {}", execution);
+        mailService.sendMail(execution, "We will contact you for second interview", "templates/second-interview-mail.txt");
 
 
     }
