@@ -22,9 +22,6 @@ public class FirstInterviewMail implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("Send first interview mail to candidate {}", execution);
         mailService.sendMail(execution, "We will contact you for first interview", "templates/first-interview-mail.txt");
-
-
     }
-
 
 }

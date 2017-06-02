@@ -1,6 +1,5 @@
 package ch.fhnw.recruiting.delegate;
 
-import ch.fhnw.recruiting.mail.MailService;
 import ch.fhnw.recruiting.rezscore.RezScore;
 import ch.fhnw.recruiting.rezscore.RezScoreAdapter;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
@@ -19,7 +18,6 @@ public class CvAnalyze implements JavaDelegate {
 
     private final RezScoreAdapter rezScoreAdapter;
 
-
     public CvAnalyze(RezScoreAdapter rezScoreAdapter) {
         this.rezScoreAdapter = rezScoreAdapter;
 
@@ -27,8 +25,6 @@ public class CvAnalyze implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-
-
         LOGGER.info("Start upload cv {}", execution);
 
         RezScore score = getRezScore(execution);

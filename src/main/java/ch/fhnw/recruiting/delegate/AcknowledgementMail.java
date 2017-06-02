@@ -7,9 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
 
 
 @Component
@@ -27,9 +24,6 @@ public class AcknowledgementMail implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("Send submit mail to candidate {}", execution);
         mailService.sendMail(execution, "Thanks for your application", "templates/submit-mail.txt");
-
-
     }
-
 
 }

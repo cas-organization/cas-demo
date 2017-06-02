@@ -23,9 +23,6 @@ public class SecondInterviewMail implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("Send second interview mail to candidate {}", execution);
         mailService.sendMail(execution, "We will contact you for second interview", "templates/second-interview-mail.txt");
-
-
     }
-
 
 }
