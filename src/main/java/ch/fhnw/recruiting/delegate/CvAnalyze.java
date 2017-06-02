@@ -20,7 +20,6 @@ public class CvAnalyze implements JavaDelegate {
 
     public CvAnalyze(RezScoreAdapter rezScoreAdapter) {
         this.rezScoreAdapter = rezScoreAdapter;
-
     }
 
     @Override
